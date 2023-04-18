@@ -88,24 +88,24 @@ resource "aws_route_table_association" "internet_access2" {
   subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.main-two.id
 }
-# NAT Elastic IP
-resource "aws_eip" "main" {
-  vpc = true
+#NAT Elastic IP
+#resource "aws_eip" "main" {
+#  vpc = true
 
-  tags = {
-    Name = "${var.project}-ngw-ip"
-  }
-}
+#  tags = {
+#    Name = "${var.project}-ngw-ip"
+#  }
+#}
 
 # NAT Gateway
-resource "aws_nat_gateway" "main" {
-  allocation_id = aws_eip.main.id
-  subnet_id     = aws_subnet.public[0].id
+#resource "aws_nat_gateway" "main" {
+#  allocation_id = aws_eip.main.id
+#  subnet_id     = aws_subnet.public[0].id
 
-  tags = {
-    Name = "${var.project}-ngw"
-  }
-}
+#  tags = {
+#    Name = "${var.project}-ngw"
+#  }
+#}
 
 # NAT Elastic IP
 resource "aws_eip" "main-two" {
@@ -127,12 +127,12 @@ resource "aws_nat_gateway" "main-two" {
 }
 
 # Add route to route table
-resource "aws_route" "main" {
-  route_table_id         = aws_vpc.this.default_route_table_id
-  nat_gateway_id         = aws_nat_gateway.main.id
-  destination_cidr_block = "0.0.0.0/0"
+#resource "aws_route" "main" {
+#  route_table_id         = aws_vpc.this.default_route_table_id
+#  nat_gateway_id         = aws_nat_gateway.main.id
+#  destination_cidr_block = "0.0.0.0/0"
   
-}
+#}
 
 # Add route to route table
 resource "aws_route_table" "main-two" {

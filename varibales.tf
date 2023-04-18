@@ -36,6 +36,6 @@ variable "tags" {
   default = {
     "Project"     = "TerraformEKSWorkshop"
     "Environment" = "Development"
-    "Owner"       = "Albin Antony"
+    "Owner"       = "BMJ"
   }
 }
